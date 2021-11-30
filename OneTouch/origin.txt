@@ -1,0 +1,42 @@
+class OneTouch{
+  private :
+ 
+      bool flag = false;
+      int counter = 0;
+      int pin;
+      init(){
+        pinMode(pin, INPUT);
+      }
+      
+      int get_state(){
+
+        int state = digitalRead(pin);
+
+        if (state == 1){
+          flag = true;
+          counter++;
+          if (counter > 30000){
+            counter = 2;
+          }
+        }
+        else{
+          flag = false;
+        }
+      
+        if (flag == true){
+          if (counter == 1){
+            state = 1;
+          }
+          else {
+            state = 0;
+          }
+        }
+        else{
+          state = 0;
+          counter = 0;
+        }
+        Serial.println(state);
+        return state;
+      }
+};
+
