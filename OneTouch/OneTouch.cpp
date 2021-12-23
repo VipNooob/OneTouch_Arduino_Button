@@ -35,7 +35,7 @@ int OneTouch::get_state() {
         state = 0;
         counter = 0;
     }
-    Serial.println(state);
+    //Serial.println(state);
     return state;
 }
 
